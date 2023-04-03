@@ -15,8 +15,10 @@ module.exports = async (req, resp, next) => {
 
     const { category } = req.body;
     if(!category) resp.status(400).send("Category input is required");
-
+    
+    console.log("Category", category);
     const categoryExists = await findCategory(category);
+      console.log("category already exists", categoryExists);
     if(categoryExists) resp.status(400).send("Category name already exists!")
 
     else {
@@ -25,7 +27,7 @@ module.exports = async (req, resp, next) => {
             msg: messages('createdCategory'),
             item: categoryCreated
         }
-        return resp.status(201).send(ans);
+        return resp.json(ans);
     }
 
   } catch (err) {
