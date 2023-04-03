@@ -1,12 +1,15 @@
 const Category = require('../models/CategoryModel')
-const logger = require('../../../commons/utils/logger');
+// const logger = require('../../../commons/utils/logger');
 
 exports.getCategories = async () => {
-    try {
-          return await Category.find({}).sort({name: "asc"}).orFail() 
-        } catch (err) {
-      logger.error('Error in category dao getcategories', err);
-      throw error;
-    }
-  };
+        return await Category.find({}).sort({ name: "asc" }).orFail(); 
+      };
+
+exports.findCategory = async (category) => {
+      return await Category.findOne({ name: category });
+}
+
+exports.createCategory = async (category) => {
+      return await Category.create({ name: category });
+}
   

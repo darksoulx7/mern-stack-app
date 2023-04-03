@@ -1,5 +1,6 @@
 {
-    "getCategories": "All categories are fetched successfully!!"
+    "getCategories": "All categories are fetched successfully!!",
+    "createdCategory": "category created successfully!!"
   }
   
   
