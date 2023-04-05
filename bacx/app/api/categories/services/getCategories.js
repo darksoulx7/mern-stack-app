@@ -12,8 +12,9 @@ module.exports = async (req, resp, next) => {
   try {
     const categories = await getCategories();
     const ans = {
-      items: categories,
       msg: messages('getCategories'),
+      items: categories,
+      count: categories.length
     }
 
     resp.status(200).send(ans);

@@ -13,7 +13,5 @@ exports.createCategory = async (category) => {
 }
 
 exports.deleteCategory = async (category) => {
-      const categoryExists = await this.findCategory(category);
-      return categoryExists ? await categoryExists.remove() : false
-      
+      return await Category.deleteOne({ name: category });
 }

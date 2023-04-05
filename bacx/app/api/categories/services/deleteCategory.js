@@ -13,10 +13,10 @@ module.exports = async (req, resp, next) => {
         const { category } = req.params;
 
         if(req.params.category !== "Choose category") {
-            const ans = await deleteCategory(decodeURIComponent(category))
-            if (!ans) resp.send("Category does not exists!")
-            resp.json({ categoryDeleted: true});
-        }
+           const entry = await deleteCategory(decodeURIComponent(category))
+           if(!entry.deletedCount) resp.status(200).send("Category does not exists");
+           else resp.json({ categoryDeleted: true });
+         }
     } catch (err) {
         console.log("Error creating category!", err);
         next(next);
