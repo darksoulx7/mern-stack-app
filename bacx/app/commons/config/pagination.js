@@ -1,3 +1,3 @@
-const recordsPerPage = 2
+const recordsPerPage = 3
 
 module.exports = recordsPerPage
