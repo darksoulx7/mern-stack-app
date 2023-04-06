@@ -1,4 +1,4 @@
-const { CategoryDao: { findCategory, addValuesToTheAttr, saveCategory, findCategoryInAsc } } = require('../../../commons/db/dao');
+const { CategoryDao: { findCategory, addValuesToTheAttr, saveCategory, getCategories } } = require('../../../commons/db/dao');
 
 /**
  *
@@ -46,7 +46,7 @@ module.exports = async (req, resp, next) => {
 
             await saveCategory(categoryExists);
 
-            let updatedCategory = await findCategoryInAsc();
+            let updatedCategory = await getCategories();
             return resp.status(201).json({ "attributeAdded": updatedCategory });
 
         } else {

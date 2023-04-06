@@ -22,8 +22,4 @@ exports.addValuesToTheAttr = (categoryExists, obj) => {
 
 exports.saveCategory = async (category) => {
       return await category.save();
-};   
-
-exports.findCategoryInAsc = async () => { 
-      return await Category.find({}).sort({name: "asc"});
 };
