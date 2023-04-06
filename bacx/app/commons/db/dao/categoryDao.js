@@ -15,3 +15,15 @@ exports.createCategory = async (category) => {
 exports.deleteCategory = async (category) => {
       return await Category.deleteOne({ name: category });
 }
+
+exports.addValuesToTheAttr = (categoryExists, obj) => {
+      categoryExists.attrs.push(obj);  
+}
+
+exports.saveCategory = async (category) => {
+      return await category.save();
+};   
+
+exports.findCategoryInAsc = async () => { 
+      return await Category.find({}).sort({name: "asc"});
+};

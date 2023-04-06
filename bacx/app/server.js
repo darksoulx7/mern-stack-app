@@ -28,7 +28,7 @@ const server = restServer({name})
 const startServer = async () => {
   routes(server);
   server.use(errorHandler);
-  server.listen(process.env.PORT, () => logger.info(name));
+  server.listen(process.env.PORT || 9090, () => logger.info(name));
 };
 
 module.exports = { server, startServer, errorHandler }
