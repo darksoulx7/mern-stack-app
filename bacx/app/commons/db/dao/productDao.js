@@ -1,8 +1,9 @@
 const Product = require("../models/ProductModel");
 const recordsPerPage = require("../../config/pagination");
 
-exports.getProducts = async (pageNum, sort, query) => {
+exports.getProducts = async (pageNum, sort, query, select) => {
   return await Product.find(query)
+    .select(select)
     .skip(recordsPerPage * (pageNum - 1))
     .sort(sort)
     .limit(recordsPerPage);
@@ -34,4 +35,8 @@ exports.getPaginationLinksNumber = (totalProducts) => {
 
 exports.saveProduct = async (product) => {
   return await product.save();
+};
+
+exports.getProductsById = async (id) => {
+  return await Product.findById(id).populate("reviews");
 };
