@@ -40,3 +40,9 @@ exports.saveProduct = async (product) => {
 exports.getProductsById = async (id) => {
   return await Product.findById(id).populate("reviews");
 };
+
+exports.getBestSellers = async () => {
+  return await Product.aggregate([
+    { $limit: 3 }
+  ])
+}
