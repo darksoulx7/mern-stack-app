@@ -1,7 +1,9 @@
 {
     "getCategories": "All categories are fetched successfully!!",
     "createdCategory": "category created successfully!!",
-    "getProducts": "Products fetched successfully!!"
+    "getProducts": "Products fetched successfully!!",
+    "productNotFound": "Product Not Found!!",
+    "productRemoved": "Product deleted successfully!!"
   }
   
   

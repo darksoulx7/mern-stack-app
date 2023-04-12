@@ -1,4 +1,4 @@
-const { ProductDao: { getBestSellers } } = require("../../../commons/db/dao");
+const { ProductDao: { createProduct } } = require("../../../commons/db/dao");
 const logger = require("../../../commons/utils/logger");
 
 /**
@@ -10,14 +10,14 @@ const logger = require("../../../commons/utils/logger");
 
 module.exports = async (req, resp, next) => {
   try {
-      const products = await getBestSellers();
+      const product = await createProduct(req.body);
       const ans = {
-        msg: "Best Seller Products!",
-        products,
+        msg: "product created",
+        productId: product._id
       };
       resp.status(200).send(ans);
   } catch (err) {
-    logger.error(`Error while getting product, ${err}`);
+    logger.error(`Error while creating product, ${err}`);
     next(err);
   }
 };

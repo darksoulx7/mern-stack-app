@@ -1,4 +1,4 @@
-const { ProductDao: { getBestSellers } } = require("../../../commons/db/dao");
+const { ProductDao: { getProductsForAdmin } } = require("../../../commons/db/dao");
 const logger = require("../../../commons/utils/logger");
 
 /**
@@ -10,9 +10,9 @@ const logger = require("../../../commons/utils/logger");
 
 module.exports = async (req, resp, next) => {
   try {
-      const products = await getBestSellers();
+      const products = await getProductsForAdmin();
       const ans = {
-        msg: "Best Seller Products!",
+        msg: "Admin - Products",
         products,
       };
       resp.status(200).send(ans);
