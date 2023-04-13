@@ -13,7 +13,7 @@ exports.findProduct = async (product) => {
   return await Product.findOne({ name: product });
 };
 
-exports.findProductById = async(id) => {
+exports.findProductById = async (id) => {
   return await Product.findById(id);
 }
 
@@ -66,34 +66,39 @@ exports.getProductsForAdmin = async () => {
 exports.createProduct = async (body) => {
 
   const product = new Product()
-  const { name, description, count, price, category,attributesTable  } = body
+  const { name, description, count, price, category, attributesTable } = body
   product.name = name
   product.description = description
   product.count = count
   product.price = price
   product.category = category
-  if( attributesTable.length > 0 ) {
-      attributesTable.map((item) => {
-          product.attrs.push(item)
-      })
+  if (attributesTable.length > 0) {
+    attributesTable.map((item) => {
+      product.attrs.push(item)
+    })
   }
   return await product.save()
 }
 
 exports.updateProduct = async (body, product) => {
-       const { name, description, count, price, category, attributesTable } = body
-       product.name = name || product.name
-       product.description = description || product.description 
-       product.count = count || product.count
-       product.price = price || product.price
-       product.category = category || product.category
-       if( attributesTable.length > 0 ) {
-           product.attrs = []
-           attributesTable.map((item) => {
-               product.attrs.push(item)
-           })
-       } else {
-           product.attrs = []
-       }
-       await product.save()
+  const { name, description, count, price, category, attributesTable } = body
+  product.name = name || product.name
+  product.description = description || product.description
+  product.count = count || product.count
+  product.price = price || product.price
+  product.category = category || product.category
+  if (attributesTable.length > 0) {
+    product.attrs = []
+    attributesTable.map((item) => {
+      product.attrs.push(item)
+    })
+  } else {
+    product.attrs = []
+  }
+  await product.save()
+}
+
+exports.findAndDeleteImagePath = async (id, imagePath) => {
+  await Product.findOneAndUpdate({ _id: id },
+    { $pull: { images: { path: imagePath } } })
 }

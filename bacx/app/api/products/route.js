@@ -1,5 +1,5 @@
 const express = require("express");
-const { getProducts, getProductById, getBestSellers, getProductsForAdmin, adminDeleteProduct, adminCreateProduct, adminUpdateProduct } = require("./services");
+const { getProducts, getProductById, getBestSellers, getProductsForAdmin, adminDeleteProduct, adminCreateProduct, adminUpdateProduct, adminFileUplod, adminDeleteProductImage } = require("./services");
 
 const app = express();
 const router = express.Router();
@@ -15,8 +15,10 @@ router.get("/category/:categoryName/search/:searchQuery", getProducts);
 
 // admin routes
 router.get("/admin", getProductsForAdmin);
-router.delete("/admin/:id", adminDeleteProduct);
 router.post("/admin", adminCreateProduct);
+router.post("/admin/upload", adminFileUplod)
 router.put("/admin/:id", adminUpdateProduct);
+router.delete("/admin/image/:imagePath/:productId", adminDeleteProductImage)
+router.delete("/admin/:id", adminDeleteProduct);
 
 module.exports = router;

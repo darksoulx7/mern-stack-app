@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const logger = require('../commons/utils/logger');
+const fileUpload = require('express-fileupload');
 
 /**
  * Restify server with common configuration for REST Apis.
@@ -16,6 +17,7 @@ const restServer = (opts) => {
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(cookieParser());
+  server.use(fileUpload());
 
   process.on('uncaughtException', (error) => {
     logger.error('Error: %s', error);
