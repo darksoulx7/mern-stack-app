@@ -1,0 +1,1 @@
+module.exports = key => require('./messages.json')[key];

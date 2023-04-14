@@ -1,12 +1,13 @@
 const express = require('express');
-const { getCategories, createCategory, deleteCategory, saveAttr } = require('./services');
-
-const app = express();
 const router = express.Router();
 
-app.use(express.json());
+const { getCategories, createCategory, deleteCategory, saveAttr } = require('./services');
+const { verifyIsLoggedIn, verifyIsAdmin } = require('../../commons/middleware/verifyAuthToken');
 
 router.get('/', getCategories);
+
+router.use(verifyIsLoggedIn);
+router.use(verifyIsAdmin);
 router.post('/', createCategory);
 router.delete('/:category', deleteCategory);
 router.post('/attr', saveAttr);

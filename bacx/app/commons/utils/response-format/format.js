@@ -246,8 +246,7 @@ font-size: 14px;
     401
   </h1>
 </div>
-<h2>we are sorry, but you are not authorized to access the DataLake System</h2>
-<h2>This portal is open for all Rheem employees and outside rheem people are restricted for security reasons and need to be allowed by backend proxy. Please contact the DataLake Management team to allow access to these credentials backend.</h2>
+<h2>we are sorry, but you are not authorized to access the mongodb System</h2>
 
 </div>
 </div>

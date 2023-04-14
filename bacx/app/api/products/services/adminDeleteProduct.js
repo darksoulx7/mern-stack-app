@@ -1,6 +1,6 @@
 const { ProductDao: {  findProductById, deleteProduct } } = require("../../../commons/db/dao");
 const logger = require("../../../commons/utils/logger");
-const message = require("../../../commons/utils/get-message");
+const message = require("../../../commons/utils/getMessage");
 /**
  *
  * @param {*} req

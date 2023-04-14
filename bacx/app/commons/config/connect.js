@@ -1,7 +1,7 @@
 require("dotenv").config()
 const mongoose = require('mongoose');
 
-const connectToMongoDB = async () => {
+const connectdb = async () => {
     try {
         mongoose.set('strictQuery', true);
         await mongoose.connect(process.env.MONGO_URL, {
@@ -15,4 +15,4 @@ const connectToMongoDB = async () => {
     }
 }
 
-module.exports  = connectToMongoDB
+module.exports  = connectdb

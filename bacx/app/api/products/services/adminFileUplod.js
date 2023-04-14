@@ -1,7 +1,7 @@
 const { ProductDao: { findProductById, saveProduct } } = require("../../../commons/db/dao");
-const  { getImagesDirectory } = require("../../../commons/utils/set-paths-for-images");
+const  { getImagesDirectory } = require("../../../commons/utils/imageCreatePath");
 const logger = require("../../../commons/utils/logger");
-const imageValidate = require("../../../commons/utils/image-validate");
+const imageValidate = require("../../../commons/utils/imageValidate");
 
 /**
  *

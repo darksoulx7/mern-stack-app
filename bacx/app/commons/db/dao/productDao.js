@@ -1,5 +1,5 @@
 const Product = require("../models/ProductModel");
-const recordsPerPage = require("../../config/pagination");
+const recordsPerPage = require("../../utils/pagination");
 
 exports.getProducts = async (pageNum, sort, query, select) => {
   return await Product.find(query)

@@ -1,11 +1,11 @@
 const express = require("express");
 const { getProducts, getProductById, getBestSellers, getProductsForAdmin, adminDeleteProduct, adminCreateProduct, adminUpdateProduct, adminFileUplod, adminDeleteProductImage } = require("./services");
+// const { getProducts, getProductById, getBestSellers, getProductsForAdmin, adminDeleteProduct, adminCreateProduct, adminUpdateProduct, adminFileUplod, adminDeleteProductImage } = require("../../commons/controllers/productController");
 
-const app = express();
+const { verifyIsLoggedIn, verifyIsAdmin } = require("../../commons/middleware/verifyAuthToken");
 const router = express.Router();
 
-app.use(express.json());
-
+// user routes
 router.get("/", getProducts);
 router.get("/get-one/:id", getProductById);
 router.get('/bestsellers', getBestSellers)
@@ -14,6 +14,8 @@ router.get("/search/:searchQuery", getProducts);
 router.get("/category/:categoryName/search/:searchQuery", getProducts);
 
 // admin routes
+router.use(verifyIsLoggedIn);
+router.use(verifyIsAdmin);
 router.get("/admin", getProductsForAdmin);
 router.post("/admin", adminCreateProduct);
 router.post("/admin/upload", adminFileUplod)

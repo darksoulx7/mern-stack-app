@@ -1,5 +1,5 @@
 const { ProductDao: { findAndDeleteImagePath } } = require("../../../commons/db/dao");
-const { getImagePathFromServer, deleteImageFromServer } = require("../../../commons/utils/set-paths-for-images");
+const { getImagePathFromServer, deleteImageFromServer } = require("../../../commons/utils/imageCreatePath");
 const logger = require("../../../commons/utils/logger");
 
 /**

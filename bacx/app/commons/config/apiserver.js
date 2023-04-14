@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const logger = require('../commons/utils/logger');
+const logger = require('../utils/logger');
 const fileUpload = require('express-fileupload');
 
 /**
@@ -11,6 +11,7 @@ const fileUpload = require('express-fileupload');
  * @param {Object} opts - options for the Express server
  * @returns {*|Server}
  */
+
 const restServer = (opts) => {
   const server = express()
   server.use(cors());
@@ -20,7 +21,7 @@ const restServer = (opts) => {
   server.use(fileUpload());
 
   process.on('uncaughtException', (error) => {
-    logger.error('Error: %s', error);
+    logger.error(`Error: %s', ${error}`);
     if (error.stack) {
       logger.error(error.stack);
     }
