@@ -29,7 +29,16 @@ const startServer = async () => {
   server.use(errorHandler);
 };
 
-server.listen(process.env.PORT , () => logger.info(name));
+server.listen(process.env.PORT , () => logger.info(name))
+.on("error", function (err) {
+  process.once("SIGUSR2", function () {
+    process.kill(process.pid, "SIGUSR2");
+  });
+  process.on("SIGINT", function () {
+    // this is only called on ctrl+c, not restart
+    process.kill(process.pid, "SIGINT");
+  });
+});
 
 module.exports = { server, startServer, errorHandler }
 

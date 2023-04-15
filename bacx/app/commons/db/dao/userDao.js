@@ -1,4 +1,5 @@
 const User = require('../models/UserModel');
+const Review = require('../models/ReviewModel');
 const { hashPassword} = require('../../utils/hashPassword');
 
 exports.getUsers = async () => {
@@ -34,4 +35,8 @@ exports.updateUserProfile = async (body, user) => {
 
 exports.getUserProfile = async (id) => {
     return await User.findById(id).orFail();
+}
+
+exports.createReview = async(obj) => {
+    return await Review.create(obj);
 }
