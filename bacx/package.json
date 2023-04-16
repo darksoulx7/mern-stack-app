@@ -4,7 +4,13 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app/index.js"
+    "start": "nodemon app/index.js",
+    "server-prod": "node app/index.js",
+    "server-dev": "npx nodemon app/index.js",
+    "client": "npm start --prefix ../webx",
+    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client\"",
+    "seed": "node  app/commons/db/seeder/seeder",
+    "deleteDummyData": "node app/commons/db/seeder/seeder -d"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +32,8 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "concurrently": "^7.1.0"
   },
   "engines": {
     "node": ">= 8.9.4",
