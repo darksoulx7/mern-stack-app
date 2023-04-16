@@ -1,4 +1,4 @@
-const { OrderDao : { getOrders } } = require('../../../commons/db/dao');
+const { OrderDao : { getUserOrders } } = require('../../../commons/db/dao');
 const logger = require('../../../commons/utils/logger');
 /**
  *
@@ -8,7 +8,7 @@ const logger = require('../../../commons/utils/logger');
  */
 module.exports = async (req, resp, next) => {
   try {
-    const orderData = await getOrders();
+    const orderData = await getUserOrders(req.user._id);
     resp.status(200).json(orderData)
     
   } catch (err) {
