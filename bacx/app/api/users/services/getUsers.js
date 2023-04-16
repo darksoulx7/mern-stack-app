@@ -1,6 +1,6 @@
 const { UserDao: { getUsers } } = require('../../../commons/db/dao');
-const logger = require('../../../commons/utils/logger');
-const { messages } = require('../../../commons/utils');
+const logger = require("../../../commons/utils/logger");
+const { messages } = require("../../../commons/utils");
 
 /**
  *
@@ -10,17 +10,17 @@ const { messages } = require('../../../commons/utils');
  */
 
 module.exports = async (req, resp, next) => {
-    try {
-        const users = await getUsers();
-        const ans = {
-            msg: messages("users fetched successfully!"),
-            count: users.length,
-            users
-        }
+  try {
+    const users = await getUsers();
+    const ans = {
+      msg: messages("users fetched successfully!"),
+      count: users.length,
+      users,
+    };
 
-        resp.status(200).json(ans);
-    } catch (err) {
-        logger.error(`Error while showing users, ${err}`);
-        next(error);
-    }
+    resp.status(200).json(ans);
+  } catch (err) {
+    logger.error(`Error while showing users, ${err}`);
+    next(err);
+  }
 };

@@ -4,6 +4,10 @@ const loginUser = require("./loginUser");
 const updateUserProfile = require("./updateUserProfile");
 const getUserProfile = require("./getUserProfile");
 const writeReview = require('./writeReview');
+const getUser = require('./getUser');
+const updateUser = require('./updateUser');
+const deleteUser = require('./deleteUser');
+
 
 module.exports = {
     getUsers,
@@ -11,5 +15,8 @@ module.exports = {
     loginUser,
     updateUserProfile,
     getUserProfile,
-    writeReview
+    writeReview,
+    getUser,
+    updateUser,
+    deleteUser
 };

@@ -1,4 +1,4 @@
-const { UserDao: { getUserProfile } } = require('../../../commons/db/dao');
+const { UserDao: { findUserById } } = require('../../../commons/db/dao');
 const logger = require('../../../commons/utils/logger');
 
 /**
@@ -10,13 +10,8 @@ const logger = require('../../../commons/utils/logger');
 
 module.exports = async (req, resp, next) => {
     try {
-        const user = await getUserProfile(req.params.id);
-        const ans = {
-            msg: "user information is available!",
-            doc: user
-        }
-
-        resp.status(200).json(ans);
+        const user = await findUserById(req.params.id)
+        return resp.send(user);
     } catch (err) {
         logger.error(`Error while showing users, ${err}`);
         next(err);
