@@ -29,7 +29,7 @@ const startServer = async () => {
   server.use(errorHandler);
 };
 
-server.listen(process.env.PORT , () => logger.info(name))
+server.listen(process.env.PORT, () => logger.info(`${name}, ${process.env.PORT}`))
 .on("error", function (err) {
   process.once("SIGUSR2", function () {
     process.kill(process.pid, "SIGUSR2");
