@@ -29,3 +29,10 @@ exports.getPreSignedUrl = (key) => {
         Expires: 60 * 5 * 24
     })
 }
+
+exports.deleteImageFromS3 = (key) => {
+    return s3.deleteObject({
+        Bucket: process.env.AWS_BUCKET,
+        Key: key
+    }, function(err, data) {})
+}
