@@ -5,7 +5,7 @@ const path = require('path');
 const logger = require('./commons/utils/logger');
 const connectdb = require('./commons/config/connect')
 const { internalError } = require('./commons/utils/response-format/format');
-
+const swaggerDocs = require('./swagger');
 const name = "Mern Project";
 connectdb()
 
@@ -40,6 +40,7 @@ server.listen(process.env.PORT, () => logger.info(`${name}, ${process.env.PORT}`
   });
 });
 
+swaggerDocs(server, process.env.PORT);
 module.exports = { server, startServer, errorHandler }
 
 if (require.main === module) {
